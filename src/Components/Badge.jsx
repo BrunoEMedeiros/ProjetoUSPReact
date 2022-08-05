@@ -9,11 +9,19 @@ export function Badge({ content }){
 
 const Div = styled.div`
 
-    padding: 0% .3rem 1rem;
+
+    display: flex;
+
+    justify-content: center;
+
     border-radius: 1rem;
+
     font-weight: 500;
+
     color: white;
+
     cursor: pointer;
-    background-color: ${defaultThemeColor};
+
+    font-size: 2rem;
     
 `;
