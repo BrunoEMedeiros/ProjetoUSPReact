@@ -1,13 +1,13 @@
 import styled from "styled-components"
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { darkThemeColor } from "../utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CrudCard } from "./CrudCard";
 
 export function Crud(){
 
     const[sala, setSala] = useState([]);
-    const[salaName, setSalaName] = useState('Digite o nome da sala');
+    const[salaName, setSalaName] = useState();
 
     function handlerSala(){
         const newSala = {
@@ -34,15 +34,17 @@ export function Crud(){
                     </Button>
                 </AddRoom>
             </Header>
-            {
-                sala.map(data =>{
-                    return <CrudCard 
-                        sala_id = { data.sala_id }
-                        name = { data.nome }
-                        status_sala = { data.status_sala }
-                    />
-                })
-            }
+            <Content>
+                {
+                    sala.map(data =>{
+                        return <CrudCard 
+                            sala_id = { data.sala_id }
+                            name = { data.nome }
+                            status_sala = { data.status_sala }
+                        />
+                    })
+                }
+            </Content>
         </Container>
     )
 }
@@ -50,6 +52,8 @@ export function Crud(){
 const Container = styled.div`
     margin-top: 3rem;
     width: 60%;
+    height: 70%;
+    
 `;
 const Header = styled.div`
     padding: 1rem;
@@ -58,7 +62,7 @@ const Header = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    background-color: rgba(154, 0, 228, 0.6);
+    background-color: #9D4EDD;
 
     border-radius: 1rem;
 
@@ -69,6 +73,7 @@ const Header = styled.div`
 `;
 const Name = styled.h1`
     font-size: 3rem;
+    color: whitesmoke;
 `;
 const AddRoom = styled.div`
 
@@ -110,4 +115,15 @@ const Button = styled.button`
         color: ${darkThemeColor};
     }
 
+`;
+
+const Content = styled.div`
+    height: 100%;
+    overflow: auto;
+    -webkit-scrollbar {
+        display: none;
+    }
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 `;

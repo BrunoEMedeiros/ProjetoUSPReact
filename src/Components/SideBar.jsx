@@ -36,21 +36,13 @@ export function SideBar(){
                         <RiProfileLine />
                         Perfil
                     </Link>
-                </Links>
-                <Contact>
-                    <LinkContact>
+                    <Link>
                         <MdContactSupport size={30}/>
-                    </LinkContact>
-                    <LinkContact>
                         <MdOutlineFacebook size={30}/>
-                    </LinkContact>
-                    <LinkContact>
                         <RiInstagramFill size={30}/>
-                    </LinkContact>
-                    <LinkContact>
                         <AiFillTwitterCircle size={30}/>
-                    </LinkContact>
-                </Contact>
+                    </Link>
+                    </Links>
             </LinksContainer>
         </Container>
     )
@@ -64,7 +56,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 0.5rem;
 `;
 
 const ProfileContainer = styled.div`
@@ -127,6 +119,10 @@ const Link = styled.li`
     
     font-size: 1.5rem;
 
+    &:last-child{
+        border-radius: 1rem;
+    }
+
     svg{
         font-size: 2.5rem;
     }
@@ -139,6 +135,8 @@ const Link = styled.li`
     &:hover{
         background-color: rgba(154, 0, 228, 0.6);
     }
+
+
 `;
 
 const Contact = styled.div`
