@@ -36,15 +36,21 @@ export function SideBar(){
                         <RiProfileLine />
                         Perfil
                     </Link>
-                    <Link>
-                        <Contact>
-                            <MdContactSupport />
-                            <MdOutlineFacebook />
-                            <RiInstagramFill />
-                            <AiFillTwitterCircle />
-                        </Contact>
-                    </Link>
                 </Links>
+                <Contact>
+                    <LinkContact>
+                        <MdContactSupport size={30}/>
+                    </LinkContact>
+                    <LinkContact>
+                        <MdOutlineFacebook size={30}/>
+                    </LinkContact>
+                    <LinkContact>
+                        <RiInstagramFill size={30}/>
+                    </LinkContact>
+                    <LinkContact>
+                        <AiFillTwitterCircle size={30}/>
+                    </LinkContact>
+                </Contact>
             </LinksContainer>
         </Container>
     )
@@ -54,7 +60,7 @@ const Container = styled.div`
     width: 20%;
     height: 100% !important;
     border-radius: 2rem;
-    background-color: #091322;
+    background-color: ${darkThemeColor};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -87,20 +93,20 @@ const LinksContainer = styled.div`
     height: 100%;
     width: 100%;
     border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 `;
 
 const Links = styled.ul`
     
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     list-style-type: none;
 
     padding-top: 1rem;
-
-    margin: 0 1rem;
-
-    gap: 2rem;
 `;
 const Link = styled.li`
 
@@ -109,17 +115,13 @@ const Link = styled.li`
 
     align-items: center;
 
-    border-radius: 1.2rem;
+    background-color: ${darkThemeColor};
 
-    background-color: rgba(154, 0, 228, 0.6);
-
-    box-shadow: 0rem 0.5rem 0.25rem 0rem rgba(169, 46, 226, 0.6);
-    
     cursor: pointer;
 
     color: whitesmoke;
 
-    padding: 1rem;
+    padding: 2rem;
 
     color: whitesmoke;
     
@@ -135,17 +137,30 @@ const Link = styled.li`
     }
 
     &:hover{
-        background-color: whitesmoke;
-        color: ${darkThemeColor};
+        background-color: rgba(154, 0, 228, 0.6);
     }
 `;
 
 const Contact = styled.div`
-
-    height: 100%;
     width: 100%;
 
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1.5rem;
+
+    background-color: rgba(154, 0, 228, 0.6);
+
+    padding: 1rem;
+`;
+
+const LinkContact = styled.div`
+
+    padding: 1rem;
+    &:hover{
+        background-color: ${darkThemeColor};
+        color: whitesmoke;
+        border-radius: 1rem;
+    }
+
 `;
