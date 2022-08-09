@@ -1,22 +1,143 @@
 import styled from "styled-components"
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { darkThemeColor } from "../utils";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useFetch } from "../hooks/useFetch";
+import { usePost } from "../hooks/usePost";
 import { CrudCard } from "./CrudCard";
+import Modal from 'react-modal'
+import axios from 'axios';
 
-export function Crud(){
+Modal.setAppElement('#root')
 
-    const[sala, setSala] = useState([]);
+export function Crud({ title }){
+
+
+    const { data, carregando, setA } = useFetch('/sala/');
     const[salaName, setSalaName] = useState();
+    const[editCod, setEditCod] = useState();
+    const[modalIsOpen, setModalIsOpen] = useState(false);
+    const[editSalaNome, setEditSalaNome] = useState();
+    const[modalType, setModalType] = useState(false);
 
-    function handlerSala(){
-        const newSala = {
-            sala_id : 1,
-            nome : salaName,
-            status_sala : 1
-         }
- 
-        setSala([...sala, newSala]);
+    function onEditModal(id, nome, type){
+        setModalType(type);
+        setEditSalaNome(nome);
+        setEditCod(id);
+        openModalEdit();
+    }
+
+    function openModalEdit(){
+        setModalIsOpen(true)
+    }
+
+    function closeModalEdit(){
+        setModalIsOpen(false)
+    }
+
+    /*useEffect(() => {
+        async function fetchSala(){
+            axios.get('http://localhost:4000/sala/')
+            .then((response) => {
+                setSala(response.data);
+            })
+        }
+
+        fetchSala();
+        
+    }, [salaCallBack]);
+    */
+
+    async function handlerSala(){
+        usePost('/sala/novo', {
+            nome : salaName
+        });
+        
+        setA(true);
+    }
+
+    async function editSala(){
+        axios.put(`http://localhost:4000/sala/alterar/${editCod}`,{
+            nome : editSalaNome
+        }).then((response) => {
+            if(response.status == 206)
+            {
+                closeModalEdit();
+                window.alert(
+                    "Faltou alguma coisa!"
+                )
+                if (confirmBox === true) {
+                  window.close  
+                }
+            }
+            else if(response.status == 203)
+            {
+                closeModalEdit();
+                window.alert(
+                    "Esta sala ja foi cadastrada"
+                )
+                if (confirmBox === true) {
+                  window.close  
+                }
+            }
+            else if(response.status == 200)
+            {
+                closeModalEdit();
+                setSalaCallBack(true);
+            }
+            else if(response.status == 500)
+            {
+                closeModalEdit();
+                window.alert(
+                    "Ops...ocorreu um erro ao alterar a sala"
+                )
+                if (confirmBox === true) {
+                  window.close  
+                }
+            }
+        })
+    }
+
+    async function deleteSala(){
+        axios.delete(`http://localhost:4000/sala/excluir/${editCod}`)
+        .then((response) => {
+            if(response.status == 203)
+            {
+                closeModalEdit();
+                window.alert(
+                    "Sala nao encontrada para excluir!"
+                )
+                if (confirmBox === true) {
+                  window.close  
+                }
+            }
+            else if(response.status == 200)
+            {
+                closeModalEdit();
+                setSalaCallBack(true);
+            }
+            else if(response.status == 500)
+            {
+                closeModalEdit();
+                window.alert(
+                    "Ops...ocorreu um erro ao excluir a sala"
+                )
+                if (confirmBox === true) {
+                  window.close  
+                }
+            }
+        })
+    }
+
+    const customStyles = {
+        content: {
+            top: '35%',
+            right: '35%',
+            bottom: 'auto',
+            left: '35%',
+            padding: '5rem',
+            borderRadius: '1rem'
+        },
     }
 
     return(
@@ -27,24 +148,67 @@ export function Crud(){
                     <input 
                         type="text" 
                         placeholder='Digite o nome...'
-                        onChange={e => setSalaName(e.target.value)} 
+                        onChange={e => setSalaName(e.target.value)}
                     />
-                    <Button onClick={() => { handlerSala() }}>
+                    <Button onClick={handlerSala}>
                         <IoIosAddCircleOutline size={40} />
                     </Button>
                 </AddRoom>
             </Header>
-            <Content>
+            {
+                carregando ? 
+                <h1>Carregando...</h1>
+                :
+                <Content>
                 {
-                    sala.map(data =>{
+                    data.map(salas => {
                         return <CrudCard 
-                            sala_id = { data.sala_id }
-                            name = { data.nome }
-                            status_sala = { data.status_sala }
+                                key={salas.sala_id}
+                                onEdit = {onEditModal}
+                                sala_id = { salas.sala_id }
+                                name = { salas.nome }
                         />
                     })
                 }
             </Content>
+            }
+            <Modal 
+                isOpen={modalIsOpen} 
+                onRequestClose={closeModalEdit}
+                contentLabel="Editar Sala"
+                style={customStyles}
+            >
+            <ModalContainer>
+                <ModalTitle>
+                    {
+                        modalType ? 'Excluir sala' : 'Editar sala'
+                    }
+                </ModalTitle>
+                <ModalForm>
+                    {
+                        modalType ? 
+                        <ModalInput type="text" 
+                            disabled={true} 
+                            placeholder={editSalaNome}
+                        /> : 
+                        <ModalInput type="text" 
+                        placeholder={editSalaNome}
+                        onChange={e => setEditSalaNome(e.target.value)}
+                    />
+                    }
+                    {
+                        modalType ? 
+                        <ModalButtonDelete onClick={deleteSala}> 
+                            Excluir 
+                        </ModalButtonDelete>
+                        : 
+                        <ModalButtomSave onClick={editSala}>
+                            Salvar
+                        </ModalButtomSave>
+                    }
+                </ModalForm>
+            </ModalContainer>
+            </Modal>
         </Container>
     )
 }
@@ -126,4 +290,91 @@ const Content = styled.div`
 
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+`;
+
+const ModalContainer = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+   
+`;
+
+const ModalTitle = styled.h1`
+    font-size: 3rem;
+`;
+
+const ModalForm = styled.div`
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+`;
+
+const ModalInput = styled.input`
+    width: 100%;
+    
+    padding: 2rem;
+
+    background: #E6E6E6;
+    border-radius: 1rem;
+    border: none;
+
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+
+    font-size: 2rem;
+`;
+
+const ModalButtomSave = styled.button`
+    width: 100%;
+
+    padding: 1rem;
+
+    border: none;
+
+    border-radius: 1rem;
+
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+
+    font-size: 2rem;
+    font-weight: 900;
+
+    background-color: blueviolet;
+
+    color: gray;
+
+    &:hover{
+        color : whitesmoke;
+        cursor: pointer;
+        background-color: #00D100;
+    }
+`;
+
+const ModalButtonDelete = styled.button`
+    width: 100%;
+
+    padding: 1rem;
+
+    border: none;
+
+    border-radius: 1rem;
+
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+
+    font-size: 2rem;
+    font-weight: 900;
+
+    background-color: blueviolet;
+
+    color: gray;
+
+    &:hover{
+        color : whitesmoke;
+        cursor: pointer;
+        background-color: red;
+    }    
 `;

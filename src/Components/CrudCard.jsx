@@ -2,8 +2,10 @@ import styled from "styled-components"
 import { MdEdit } from 'react-icons/md'
 import { AiFillDelete } from 'react-icons/ai'
 import { darkThemeColor } from "../utils"
+import { useState } from "react"
 
-export function CrudCard({ sala_id, name, status_sala }){
+export function CrudCard({ sala_id, name, onEdit }){
+
     return (
         <Container>
             <Name>
@@ -11,10 +13,14 @@ export function CrudCard({ sala_id, name, status_sala }){
             </Name>
             <Buttons>
                 <OptionButton>
-                    <MdEdit size={25}/>
+                    <MdEdit size={25} onClick={ () => {
+                        onEdit(sala_id, name, false);
+                    }}/>
                 </OptionButton>
                 <OptionButton>
-                    <AiFillDelete size={25}/>
+                    <AiFillDelete size={25} onClick={ () => {
+                        onEdit(sala_id, name, true);
+                    }} />
                 </OptionButton>
             </Buttons>
         </Container>
@@ -38,6 +44,8 @@ const Container = styled.div`
     margin-top: 1rem;
     margin-bottom: 1rem;
 `;
+
+
 const Name = styled.h3`
     color: whitesmoke;
     font-size: 2rem;
@@ -61,3 +69,4 @@ const OptionButton = styled.li`
         color: ${darkThemeColor};
     }
 `;
+
