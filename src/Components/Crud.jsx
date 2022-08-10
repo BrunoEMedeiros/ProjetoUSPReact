@@ -6,14 +6,14 @@ import { useFetch } from "../hooks/useFetch";
 import { usePost } from "../hooks/usePost";
 import { CrudCard } from "./CrudCard";
 import Modal from 'react-modal'
-import axios from 'axios';
+import { usePut } from "../hooks/usePut";
+import { useDelete } from "../hooks/useDelete";
 
 Modal.setAppElement('#root')
 
 export function Crud({ title }){
 
-
-    const { data, carregando, setA } = useFetch('/sala/');
+    const { data, carregando, setDataCallBack } = useFetch('/sala/');
     const[salaName, setSalaName] = useState();
     const[editCod, setEditCod] = useState();
     const[modalIsOpen, setModalIsOpen] = useState(false);
@@ -35,98 +35,26 @@ export function Crud({ title }){
         setModalIsOpen(false)
     }
 
-    /*useEffect(() => {
-        async function fetchSala(){
-            axios.get('http://localhost:4000/sala/')
-            .then((response) => {
-                setSala(response.data);
-            })
-        }
-
-        fetchSala();
-        
-    }, [salaCallBack]);
-    */
-
     async function handlerSala(){
         usePost('/sala/novo', {
             nome : salaName
-        });
-        
-        setA(true);
+        })
+        setDataCallBack(true);
     }
 
     async function editSala(){
-        axios.put(`http://localhost:4000/sala/alterar/${editCod}`,{
+        usePut(`/sala/alterar/${editCod}`,{
             nome : editSalaNome
-        }).then((response) => {
-            if(response.status == 206)
-            {
-                closeModalEdit();
-                window.alert(
-                    "Faltou alguma coisa!"
-                )
-                if (confirmBox === true) {
-                  window.close  
-                }
-            }
-            else if(response.status == 203)
-            {
-                closeModalEdit();
-                window.alert(
-                    "Esta sala ja foi cadastrada"
-                )
-                if (confirmBox === true) {
-                  window.close  
-                }
-            }
-            else if(response.status == 200)
-            {
-                closeModalEdit();
-                setSalaCallBack(true);
-            }
-            else if(response.status == 500)
-            {
-                closeModalEdit();
-                window.alert(
-                    "Ops...ocorreu um erro ao alterar a sala"
-                )
-                if (confirmBox === true) {
-                  window.close  
-                }
-            }
         })
+        closeModalEdit()
+        setDataCallBack(true);
+       
     }
 
     async function deleteSala(){
-        axios.delete(`http://localhost:4000/sala/excluir/${editCod}`)
-        .then((response) => {
-            if(response.status == 203)
-            {
-                closeModalEdit();
-                window.alert(
-                    "Sala nao encontrada para excluir!"
-                )
-                if (confirmBox === true) {
-                  window.close  
-                }
-            }
-            else if(response.status == 200)
-            {
-                closeModalEdit();
-                setSalaCallBack(true);
-            }
-            else if(response.status == 500)
-            {
-                closeModalEdit();
-                window.alert(
-                    "Ops...ocorreu um erro ao excluir a sala"
-                )
-                if (confirmBox === true) {
-                  window.close  
-                }
-            }
-        })
+        useDelete(`/sala/excluir/${editCod}`)
+        closeModalEdit()
+        setDataCallBack(true);
     }
 
     const customStyles = {

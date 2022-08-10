@@ -9,17 +9,18 @@ export function useFetch(url){
 
     const[data, setData] = useState([]);
     const[carregando, setCarregando] = useState(true);
-    const[a, setA] = useState(false);
+    const[dataCallBack, setDataCallBack] = useState(false);
 
     useEffect(() => {
       api
       .get(url)
       .then((response) => {
           setData(response.data);
+          setDataCallBack(false);
           setCarregando(false);
       })  
-    }, [a]);
+    }, [dataCallBack])
 
-    return { data, carregando, setA }
+    return { data, carregando, setDataCallBack }
 }
 
