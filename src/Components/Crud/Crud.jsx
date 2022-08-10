@@ -1,13 +1,17 @@
-import styled from "styled-components"
 import { IoIosAddCircleOutline } from 'react-icons/io'
-import { darkThemeColor } from "../utils";
 import { useState } from "react";
-import { useFetch } from "../hooks/useFetch";
-import { usePost } from "../hooks/usePost";
-import { CrudCard } from "./CrudCard";
+import { useFetch } from "../../hooks/useFetch";
+import { usePost } from "../../hooks/usePost";
+import { CrudCard } from '../CrudCard/CrudCard';
 import Modal from 'react-modal'
-import { usePut } from "../hooks/usePut";
-import { useDelete } from "../hooks/useDelete";
+import { usePut } from "../../hooks/usePut";
+import { useDelete } from "../../hooks/useDelete";
+import { Container, Header, Name, 
+        AddRoom, Button, Content, 
+        ModalContainer, ModalTitle, 
+        ModalForm, ModalInput, 
+        ModalButtomSave, ModalButtonDelete 
+    } from './style'
 
 Modal.setAppElement('#root')
 
@@ -140,169 +144,3 @@ export function Crud({ title }){
         </Container>
     )
 }
-
-const Container = styled.div`
-    margin-top: 3rem;
-    width: 60%;
-    height: 70%;
-    
-`;
-const Header = styled.div`
-    padding: 1rem;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    background-color: #9D4EDD;
-
-    border-radius: 1rem;
-
-    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
-
-    margin-bottom: 2rem;
-
-`;
-const Name = styled.h1`
-    font-size: 3rem;
-    color: whitesmoke;
-`;
-const AddRoom = styled.div`
-
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 3rem;
-
-    input{
-        width: 70%;
-        padding: 2rem;
-
-        background: #E6E6E6;
-        border-radius: 1rem;
-        border: none;
-
-        font-size: 2rem;
-    }
-`;
-
-const Button = styled.button`
-
-    padding: 1rem;
-
-    color: whitesmoke;
-
-    cursor: pointer;
-
-    border: none;
-
-    background-color: ${darkThemeColor};
-    
-    border-radius: 1rem;
-
-    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
-    
-    &:hover{
-        background-color: whitesmoke;
-        color: ${darkThemeColor};
-    }
-
-`;
-
-const Content = styled.div`
-    height: 100%;
-    overflow: auto;
-    -webkit-scrollbar {
-        display: none;
-    }
-
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-`;
-
-const ModalContainer = styled.div`
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-   
-`;
-
-const ModalTitle = styled.h1`
-    font-size: 3rem;
-`;
-
-const ModalForm = styled.div`
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-`;
-
-const ModalInput = styled.input`
-    width: 100%;
-    
-    padding: 2rem;
-
-    background: #E6E6E6;
-    border-radius: 1rem;
-    border: none;
-
-    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
-
-    font-size: 2rem;
-`;
-
-const ModalButtomSave = styled.button`
-    width: 100%;
-
-    padding: 1rem;
-
-    border: none;
-
-    border-radius: 1rem;
-
-    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
-
-    font-size: 2rem;
-    font-weight: 900;
-
-    background-color: blueviolet;
-
-    color: gray;
-
-    &:hover{
-        color : whitesmoke;
-        cursor: pointer;
-        background-color: #00D100;
-    }
-`;
-
-const ModalButtonDelete = styled.button`
-    width: 100%;
-
-    padding: 1rem;
-
-    border: none;
-
-    border-radius: 1rem;
-
-    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
-
-    font-size: 2rem;
-    font-weight: 900;
-
-    background-color: blueviolet;
-
-    color: gray;
-
-    &:hover{
-        color : whitesmoke;
-        cursor: pointer;
-        background-color: red;
-    }    
-`;

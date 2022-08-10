@@ -7,7 +7,7 @@ import {
 
 import { Card } from "./Pages/Card";
 import { Catalog } from "./Pages/Catalog";
-import { Dashboard } from "./Pages/Dashboard";
+import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import { Home } from "./Pages/Home";
 
 export function AppRoutes(){
