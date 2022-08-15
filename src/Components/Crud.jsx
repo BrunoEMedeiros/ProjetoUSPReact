@@ -35,19 +35,6 @@ export function Crud({ title }){
         setModalIsOpen(false)
     }
 
-    /*useEffect(() => {
-        async function fetchSala(){
-            axios.get('http://localhost:4000/sala/')
-            .then((response) => {
-                setSala(response.data);
-            })
-        }
-
-        fetchSala();
-        
-    }, [salaCallBack]);
-    */
-
     async function handlerSala(){
         usePost('/sala/novo', {
             nome : salaName
