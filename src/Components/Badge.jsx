@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { defaultThemeColor } from "../utils";
+import { defaultThemeColor } from "../utils/colors";
 
 export function Badge({ content }){
     return(

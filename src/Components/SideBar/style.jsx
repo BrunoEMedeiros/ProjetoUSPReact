@@ -1,62 +1,97 @@
 import styled from "styled-components";
-import { darkThemeColor } from "../../utils";
+import { byzantium_light, byzantium_medium, darkThemeColor, oxfordBlue } from "../../utils/colors";
+import { byzantium } from "../../utils/colors";
 
 export const Container = styled.div`
     width: 20%;
     height: 100% !important;
-    border-radius: 2rem;
-    background-color: ${darkThemeColor};
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
 `;
 
 export const ProfileContainer = styled.div`
+
+    width: 100%;
+    height: 70%;
+
+    background-color: ${byzantium};
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 3rem;
-    gap: 1rem;
+    justify-content: space-between;
+
+    border-radius: 2rem;
 `;
 
 export const Avatar = styled.img`
+
     background-color: white;
-    height: 15rem;
-    width: 15rem;
-    border-radius: 6rem;
+    height: 19rem;
+    width: 19rem;
+    border-radius: 7rem;
     margin-top: 10%;
 
+    box-shadow: -13px 10px 7px 1px rgba(0,0,0,0.55);
 `;
 
+export const ProfileInfo = styled.div`
+
+    width: 100%;
+
+`;
 export const Name = styled.h1`
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    background-color: ${byzantium_medium};
     color: whitesmoke;
-    font-size: 3rem;
+    font-size: 4rem;
+   
+`;
+
+export const Level = styled.h2`
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    
+    background-color: ${byzantium_light};
+    color: whitesmoke;
+
 `;
 
 export const LinksContainer = styled.div`
+    background: ${oxfordBlue};
+
     height: 100%;
     width: 100%;
-    border-radius: 2rem;
+
+    border: none;
+
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+
 `;
 
 export const Links = styled.ul`
     
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    list-style-type: none;
 
-    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    
+    list-style-type: none;
 `;
 export const Link = styled.li`
 
+    flex-grow: 1;
+
     display: flex;
-    gap: 2rem;
 
     align-items: center;
 
@@ -72,10 +107,6 @@ export const Link = styled.li`
     
     font-size: 1.5rem;
 
-    &:last-child{
-        border-radius: 1rem;
-    }
-
     svg{
         font-size: 2.5rem;
     }
@@ -89,29 +120,5 @@ export const Link = styled.li`
         background-color: rgba(154, 0, 228, 0.6);
     }
 
-
-`;
-
-export const Contact = styled.div`
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-
-    background-color: rgba(154, 0, 228, 0.6);
-
-    padding: 1rem;
-`;
-
-export const LinkContact = styled.div`
-
-    padding: 1rem;
-    &:hover{
-        background-color: ${darkThemeColor};
-        color: whitesmoke;
-        border-radius: 1rem;
-    }
 
 `;

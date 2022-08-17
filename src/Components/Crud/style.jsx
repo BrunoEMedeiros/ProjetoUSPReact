@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { darkThemeColor } from "../../utils";
+import { darkThemeColor } from "../../utils/colors";
 
 export const Container = styled.div`
     margin-top: 3rem;
