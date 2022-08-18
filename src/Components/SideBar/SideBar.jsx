@@ -1,21 +1,21 @@
 import React from 'react';
-import { RiHomeLine, RiProfileLine, RiInstagramFill } from 'react-icons/ri';
+import { RiHomeLine, RiProfileLine} from 'react-icons/ri';
 import { FaUserAlt } from 'react-icons/fa';
-import { MdContactSupport, MdOutlineFacebook } from 'react-icons/md';
-import { AiOutlinePieChart, AiFillTwitterCircle } from 'react-icons/ai';
-import { GiStarMedal } from 'react-icons/gi';
+import { AiOutlinePieChart} from 'react-icons/ai';
 import AvatarImage from '../../assets/aristotle.svg'
-import { Badge } from '../Badge';
-import { Container, ProfileContainer, Avatar, Name, LinksContainer, Links, Link, Contact, LinkContact} from './style'
+import { Container, ProfileContainer, ProfileInfo, Avatar, Name, Level, LinksContainer, Links, Link} from './style'
 
+//  <Badge content={ <GiStarMedal  size={40} color='yellow'/> }/>
 
 export function SideBar(){
     return (
         <Container>
             <ProfileContainer>
                 <Avatar src={ AvatarImage}/>
-                <Name>Bruno M</Name>
-                <Badge content={ <GiStarMedal  size={40} color='yellow'/> }/>
+                <ProfileInfo>
+                    <Name>Bruno M</Name>
+                    <Level>Professor</Level>
+                </ProfileInfo>
             </ProfileContainer>
             <LinksContainer>
                 <Links>
@@ -35,13 +35,7 @@ export function SideBar(){
                         <RiProfileLine />
                         Perfil
                     </Link>
-                    <Link>
-                        <MdContactSupport size={30}/>
-                        <MdOutlineFacebook size={30}/>
-                        <RiInstagramFill size={30}/>
-                        <AiFillTwitterCircle size={30}/>
-                    </Link>
-                    </Links>
+                </Links>
             </LinksContainer>
         </Container>
     )
