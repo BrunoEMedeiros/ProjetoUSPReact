@@ -1,9 +1,10 @@
 import React from 'react';
-import { RiHomeLine, RiProfileLine} from 'react-icons/ri';
+import { RiHomeLine} from 'react-icons/ri';
 import { FaUserAlt } from 'react-icons/fa';
 import { AiOutlinePieChart} from 'react-icons/ai';
+import { FiSettings } from 'react-icons/fi'
 import AvatarImage from '../../assets/aristotle.svg'
-import { Container, ProfileContainer, ProfileInfo, Avatar, Name, Level, LinksContainer, Links, Link} from './style'
+import { Container, ProfileContainer, ProfileInfo, Avatar, Name, Level, LinksContainer, Links, Li} from './style'
 
 //  <Badge content={ <GiStarMedal  size={40} color='yellow'/> }/>
 
@@ -19,22 +20,22 @@ export function SideBar(){
             </ProfileContainer>
             <LinksContainer>
                 <Links>
-                    <Link>
+                    <Li>
                         <RiHomeLine />
                         Salas
-                    </Link>
-                    <Link>
+                    </Li>
+                    <Li>
                         <FaUserAlt />
                         Alunos
-                    </Link>
-                    <Link>
+                    </Li>
+                    <Li>
                         <AiOutlinePieChart />
                         Relatórios
-                    </Link>
-                    <Link>
-                        <RiProfileLine />
+                    </Li>
+                    <Li>
+                        <FiSettings />
                         Perfil
-                    </Link>
+                    </Li>
                 </Links>
             </LinksContainer>
         </Container>

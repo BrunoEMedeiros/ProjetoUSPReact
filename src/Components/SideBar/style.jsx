@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { byzantium_light, byzantium_medium, darkThemeColor, oxfordBlue } from "../../utils/colors";
+import { byzantium_light, byzantium_medium, oxfordBlue } from "../../utils/colors";
 import { byzantium } from "../../utils/colors";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
     width: 20%;
@@ -51,6 +52,10 @@ export const Name = styled.h1`
     background-color: ${byzantium_medium};
     color: whitesmoke;
     font-size: 4rem;
+
+    padding: 1rem;
+
+    border-radius: 2rem 2rem 0rem 0rem;
    
 `;
 
@@ -62,6 +67,8 @@ export const Level = styled.h2`
     
     background-color: ${byzantium_light};
     color: whitesmoke;
+
+    padding: 1rem;
 
 `;
 
@@ -76,49 +83,59 @@ export const LinksContainer = styled.div`
     display: flex;
     flex-direction: column;
 
+    border-radius: 2rem;
+
 `;
 
 export const Links = styled.ul`
     
     width: 100%;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
     
     list-style-type: none;
 `;
-export const Link = styled.li`
 
-    flex-grow: 1;
+export const Li = styled.li`
+
+    flex: 1;
 
     display: flex;
 
     align-items: center;
 
-    background-color: ${darkThemeColor};
+    background-color: ${byzantium};
 
     cursor: pointer;
 
     color: whitesmoke;
 
     padding: 2rem;
-
-    color: whitesmoke;
     
     font-size: 1.5rem;
+
+    gap: 2rem;
+
+    transition: transform 250ms;
+
+    &:last-child {
+        border-radius: 0rem 0rem 2rem 2rem;
+    }
+
+    &:hover {
+        background-color: ${oxfordBlue};
+        transform: translateY(-10px);
+    }
 
     svg{
         font-size: 2.5rem;
     }
+`;
 
-    a{
-        text-decoration: none;
-        color: black;
-    }
+export const PageLink = styled(Link)`
 
-    &:hover{
-        background-color: rgba(154, 0, 228, 0.6);
-    }
-
+    font-size: 3rem;
 
 `;
