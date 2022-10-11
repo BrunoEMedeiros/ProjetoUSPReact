@@ -1,4 +1,8 @@
 
+export const pageBackground = '#f8ffe5';
+export const headerColor = '#ffb703';
+export const linksColor = '#06d6a0';
+
 export const defaultThemeColor = '#6100d4';
 export const darkThemeColor = '#7400b8';
 

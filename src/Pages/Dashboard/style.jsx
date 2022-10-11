@@ -1,17 +1,14 @@
 import styled from "styled-components";
-import { desktop_min_width, tablet_min_width } from "../../utils/responsivity";
+import { sizes } from "../../utils/sizes";
 
 export const Container = styled.div`
-    height: 100%;
-    width: min(${ desktop_min_width }, 100%);
 
-    @media (max-width: ${ tablet_min_width }) {
-       border-left: 1px solid white;
-       border-right: 1px solid white;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: 20% 70%;
+
+    @media screen and (min-device-width:${sizes.laptop}), screen and (max-width:${sizes.desktop}) {
+        //grid-template-areas: "s m";
     }
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
 `;

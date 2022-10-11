@@ -1,62 +1,65 @@
 import styled from "styled-components";
-import { byzantium_light, byzantium_medium, oxfordBlue } from "../../utils/colors";
+import { byzantium_light, headerColor, oxfordBlue, linksColor } from "../../utils/colors";
 import { byzantium } from "../../utils/colors";
-import { Link } from "react-router-dom";
-import { tablet_min_width } from "../../utils/responsivity";
+import FundoImg from '../../assets/fundo.jpg'
+
 
 export const Container = styled.div`
-    width: 20%;
-    height: 100% !important;
+   
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 2;
+    grid-column-end: 2;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    text-shadow: 4px 4px 0px black;
 `;
 
 export const ProfileContainer = styled.div`
 
     width: 100%;
-    height: 70%;
 
-    background-color: ${byzantium};
+    background-image: url(${FundoImg});
+    background-repeat: no-repeat;
+    background-size: 100%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 
-    border-radius: 2rem;
+    border-top-left-radius: 12rem;
+    border-top-right-radius: 12rem;
 `;
 
 export const Avatar = styled.img`
 
     background-color: white;
-    height: 19rem;
-    width: 19rem;
-    border-radius: 7rem;
-    margin-top: 10%;
+    height: 25rem;
+    width: 25rem;
+    border-radius: 50%;
+    margin: 2rem;
 
-    box-shadow: -13px 10px 7px 1px rgba(0,0,0,0.55);
-
-    @media (max-width:${tablet_min_width}) {
-        margin-top: 30%;
-    }
+    border: 0.7rem solid black;
 `;
 
 export const ProfileInfo = styled.div`
-
     width: 100%;
-
 `;
+
 export const Name = styled.h1`
+    
     width: 100%;
 
     display: flex;
     justify-content: center;
 
-    background-color: ${byzantium_medium};
+    background-color: ${headerColor};
     color: whitesmoke;
-    font-size: 4rem;
+    font-size: 8rem;
 
     padding: 1rem;
 
@@ -66,6 +69,8 @@ export const Name = styled.h1`
 
 export const Level = styled.h2`
     width: 100%;
+
+    font-size: 3rem;
 
     display: flex;
     justify-content: center;
@@ -78,75 +83,55 @@ export const Level = styled.h2`
 `;
 
 export const LinksContainer = styled.div`
+
     background: ${oxfordBlue};
 
-    height: 100%;
     width: 100%;
 
     border: none;
 
     display: flex;
     flex-direction: column;
-
-    border-radius: 2rem;
-
 `;
 
 export const Links = styled.ul`
     
     width: 100%;
-    height: 100%;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     
     list-style-type: none;
 `;
 
 export const Li = styled.li`
-
+  
     flex: 1;
 
     display: flex;
 
     align-items: center;
+    justify-content: center;
 
-    background-color: ${byzantium};
+    background-color: ${linksColor};
 
     cursor: pointer;
 
-    color: whitesmoke;
+    color: black;
 
-    padding: 2rem;
-    
-    font-size: 1.5rem;
+    padding: 3rem;
 
     gap: 2rem;
 
     transition: transform 250ms;
 
-    &:last-child {
-        border-radius: 0rem 0rem 2rem 2rem;
-    }
-
     &:hover {
         background-color: ${oxfordBlue};
         transform: translateY(-10px);
+        color: whitesmoke;
     }
 
     svg{
-        font-size: 4rem;
+        font-size: 7rem;
     }
-
-    @media (max-width:${tablet_min_width}) {
-        svg {
-            font-size: 5rem;
-        }
-    }
-`;
-
-export const PageLink = styled(Link)`
-
-    font-size: 3rem;
-
 `;

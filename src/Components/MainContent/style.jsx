@@ -1,9 +1,13 @@
 import styled from "styled-components";
 import { defaultThemeColor } from "../../utils/colors";
-import { desktop_min_width } from "../../utils/responsivity";
 
 export const Container = styled.div`
-    width: min( ${ desktop_min_width }, 100%);    
+    
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    
     display: flex;
     justify-content: center;
 
@@ -12,5 +16,5 @@ export const Container = styled.div`
     border-left: none;
     border-top: none;
 
-    background: linear-gradient(to bottom right, #FFFAFA 25%, ${defaultThemeColor} 150%);
+    background: whitesmoke;
 `;
