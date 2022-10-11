@@ -1,12 +1,17 @@
 import styled from "styled-components";
+import { desktop_min_width, tablet_min_width } from "../../utils/responsivity";
 
 export const Container = styled.div`
-    height: 97vh;
+    height: 100%;
+    width: min(${ desktop_min_width }, 100%);
 
-    display:flex;
+    @media (max-width: ${ tablet_min_width }) {
+       border-left: 1px solid white;
+       border-right: 1px solid white;
+    }
 
-    background: linear-gradient(to bottom right, #FFFAFA 10%, #e6e4ff 70%);
-
-    border-radius: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 `;

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { byzantium_light, byzantium_medium, oxfordBlue } from "../../utils/colors";
 import { byzantium } from "../../utils/colors";
 import { Link } from "react-router-dom";
+import { tablet_min_width } from "../../utils/responsivity";
 
 export const Container = styled.div`
     width: 20%;
@@ -36,6 +37,10 @@ export const Avatar = styled.img`
     margin-top: 10%;
 
     box-shadow: -13px 10px 7px 1px rgba(0,0,0,0.55);
+
+    @media (max-width:${tablet_min_width}) {
+        margin-top: 30%;
+    }
 `;
 
 export const ProfileInfo = styled.div`
@@ -130,7 +135,13 @@ export const Li = styled.li`
     }
 
     svg{
-        font-size: 2.5rem;
+        font-size: 4rem;
+    }
+
+    @media (max-width:${tablet_min_width}) {
+        svg {
+            font-size: 5rem;
+        }
     }
 `;
 

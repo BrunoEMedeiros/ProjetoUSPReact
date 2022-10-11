@@ -1,0 +1,32 @@
+@use 'variables'
+
+*
+    margin: 0
+    padding: 0
+    outline: 0
+
+    font-family: variables.$font-stack 
+
+    box-sizing: border-box
+
+html
+
+    font-size: variables.$font-size
+    max-height: variables.$full-viewport-height
+    max-width: variables.$full-viewport-width
+    width: variables.$full-width
+    height: variables.$full-height
+
+    body
+
+        padding: 1rem
+
+        #root
+
+            max-height: variables.$full-viewport-height
+            max-width: variables.$full-viewport-width
+
+            width: variables.$full-width
+            height: variables.$full-height
+
+            text-rendering: optimizeLegibility

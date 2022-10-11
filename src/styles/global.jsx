@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
-
+import { createGlobalStyle } from 'styled-components';
+import { mobile_max_width, tablet_min_width } from '../utils/responsivity';
 
 export default createGlobalStyle`
 
@@ -8,23 +8,7 @@ export default createGlobalStyle`
     padding: 0;
     outline: 0;
     box-sizing: border-box;
-
-    scrollbar-width: thin;
-    scrollbar-color: #7400b8 black;
-}
-
-*::-webkit-scrollbar {
-    width: 12px;
-}
-
-*::-webkit-scrollbar-track {
-    background: black;
-}
-
-*::-webkit-scrollbar-thumb {
-    background-color: #7400b8;
-    border-radius: 2rem;
-    border: 0.5rem solid black;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;    
 }
 
 html, body, #root{
@@ -37,16 +21,29 @@ html, body, #root{
     text-rendering: optimizeLegibility;
 }
 
-*,button, input{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;    
-}
-
 html{
-    font-size: 70%;
+    font-size: 62.5%;
+
 }
 
 body{
-    padding: 1em;
+    font-size: 1rem;
+}
+
+#root{
+    padding: 1rem;
+}
+
+@media (max-width:${tablet_min_width}) {
+    html{
+        font-size: 50.5%;
+    }
+}
+
+@media (max-width:${mobile_max_width}){
+    html{
+        font-size: 50.5%;
+    }
 }
 
 `;

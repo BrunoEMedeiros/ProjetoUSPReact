@@ -1,19 +1,12 @@
-import { useFetch } from "../hooks/useFetch"
 
 export function Home(){
     
-    const { data } = useFetch('/sala/');
     return(
-            <ul>
-                {
-                    data.map(salas =>{
-                        return (
-                            <li>
-                                {salas.nome}
-                            </li>
-                        )
-                    })
-                }
-            </ul>
+            <div>
+                <h1>Teste responsivo</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, error libero eligendi cum mollitia ad molestias in cumque enim labore ratione itaque voluptatum distinctio dolorem voluptatibus doloremque maiores? Libero, autem!
+                </p>
+            </div>
         )
 }

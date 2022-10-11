@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { darkThemeColor } from "../../utils/colors";
 
 export const Container = styled.div`
-    margin-top: 3rem;
-    width: 60%;
+    width: min(601px, 100%);
     height: 70%;
     
+    margin-top: 3rem;
 `;
 
 export const Header = styled.div`

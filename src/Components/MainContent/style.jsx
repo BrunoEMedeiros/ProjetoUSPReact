@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { defaultThemeColor } from "../../utils/colors";
+import { desktop_min_width } from "../../utils/responsivity";
 
 export const Container = styled.div`
-    width: 80%;
+    width: min( ${ desktop_min_width }, 100%);    
     display: flex;
     justify-content: center;
 

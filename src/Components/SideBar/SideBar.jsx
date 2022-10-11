@@ -5,6 +5,7 @@ import { AiOutlinePieChart} from 'react-icons/ai';
 import { FiSettings } from 'react-icons/fi'
 import AvatarImage from '../../assets/aristotle.svg'
 import { Container, ProfileContainer, ProfileInfo, Avatar, Name, Level, LinksContainer, Links, Li} from './style'
+import { tablet_min_width } from '../../utils/responsivity';
 
 //  <Badge content={ <GiStarMedal  size={40} color='yellow'/> }/>
 
@@ -22,7 +23,13 @@ export function SideBar(){
                 <Links>
                     <Li>
                         <RiHomeLine />
-                        Salas
+                        {
+                          window.matchMedia("(max-width: 700px)").matches ?
+                          console.log("Passei")
+                          :
+                          console.log("Nao passei")
+
+                        }
                     </Li>
                     <Li>
                         <FaUserAlt />
