@@ -3,31 +3,32 @@ import { RiHomeLine} from 'react-icons/ri';
 import { AiOutlinePieChart} from 'react-icons/ai';
 import { FiSettings } from 'react-icons/fi'
 import { FiUser } from 'react-icons/fi'
-import AvatarImage from '../../assets/aristotle.svg'
-import { Container, ProfileContainer, ProfileInfo, Avatar, Name, Level, LinksContainer, Links, Li} from './style'
+import { HiAcademicCap } from   'react-icons/hi'
+import { Container, ProfileContainer, Name, LinksContainer, Links, Li} from './style'
 
 export function SideBar(){
     return (
         <Container>
             <ProfileContainer>
-                <Avatar src={ AvatarImage}/>
-                <ProfileInfo>
-                    <Name>Bruno M</Name>
-                </ProfileInfo>
+                <HiAcademicCap color='white'/>
+                <Name>Bruno M</Name>
             </ProfileContainer>
             <LinksContainer>
                 <Links>
                     <Li>
-                        <RiHomeLine />
+                        <RiHomeLine className="icons" />
+                        SALAS
                     </Li>
                     <Li>
-                        <FiUser />
+                        <FiUser className="icons" />
+                        ALUNOS
                     </Li>
                     <Li>
-                        <AiOutlinePieChart />
+                        <AiOutlinePieChart className="icons" />
+                        QUESTÕES
                     </Li>
                     <Li>
-                        <FiSettings />
+                        <FiSettings className="icons" />
                     </Li>
                 </Links>
             </LinksContainer>

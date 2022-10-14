@@ -1,9 +1,10 @@
 
+export const backgroundColor = '#023047';
 export const pageBackground = '#f8ffe5';
 export const headerColor = '#ffb703';
 export const linksColor = '#06d6a0';
 
-export const defaultThemeColor = '#6100d4';
+export const defaultThemeColor = '#023e8a';
 export const darkThemeColor = '#7400b8';
 
 export const khakiWeb = '#B2AA8E';

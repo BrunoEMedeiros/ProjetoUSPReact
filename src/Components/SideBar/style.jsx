@@ -1,65 +1,44 @@
 import styled from "styled-components";
-import { byzantium_light, headerColor, oxfordBlue, linksColor } from "../../utils/colors";
-import { byzantium } from "../../utils/colors";
-import FundoImg from '../../assets/fundo.jpg'
-
+import { byzantium_light, defaultThemeColor, oxfordBlue, linksColor } from "../../utils/colors";
+import { backgroundColor } from "../../utils/colors";
+import { sizes } from "../../utils/sizes";
 
 export const Container = styled.div`
-   
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 2;
-    grid-column-end: 2;
+       grid-area: s;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    text-shadow: 4px 4px 0px black;
+       display: flex;
+       flex-direction: column;
+       font-family: 'Silkscreen', cursive;  
+       
 `;
 
 export const ProfileContainer = styled.div`
 
     width: 100%;
 
-    background-image: url(${FundoImg});
-    background-repeat: no-repeat;
-    background-size: 100%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    padding: 3rem;
+    background-color: ${backgroundColor};
 
-    border-top-left-radius: 12rem;
-    border-top-right-radius: 12rem;
+    svg{
+        height: 10rem;
+        width: 10rem;
+    }
+    
 `;
 
-export const Avatar = styled.img`
-
-    background-color: white;
-    height: 25rem;
-    width: 25rem;
-    border-radius: 50%;
-    margin: 2rem;
-
-    border: 0.7rem solid black;
-`;
-
-export const ProfileInfo = styled.div`
-    width: 100%;
-`;
-
-export const Name = styled.h1`
+export const Name = styled.div`
     
     width: 100%;
 
     display: flex;
     justify-content: center;
+    align-items: center;
 
-    background-color: ${headerColor};
     color: whitesmoke;
-    font-size: 8rem;
+    font-size: 3rem;
 
     padding: 1rem;
 
@@ -67,31 +46,17 @@ export const Name = styled.h1`
    
 `;
 
-export const Level = styled.h2`
-    width: 100%;
-
-    font-size: 3rem;
-
-    display: flex;
-    justify-content: center;
-    
-    background-color: ${byzantium_light};
-    color: whitesmoke;
-
-    padding: 1rem;
-
-`;
-
 export const LinksContainer = styled.div`
 
-    background: ${oxfordBlue};
-
     width: 100%;
+    height: 100%;
 
     border: none;
 
     display: flex;
     flex-direction: column;
+    background-color: #034464;
+     
 `;
 
 export const Links = styled.ul`
@@ -99,9 +64,17 @@ export const Links = styled.ul`
     width: 100%;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     
     list-style-type: none;
+
+    @media screen and (max-width: ${sizes.tablet}) {
+        
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        
+    }
 `;
 
 export const Li = styled.li`
@@ -111,27 +84,41 @@ export const Li = styled.li`
     display: flex;
 
     align-items: center;
-    justify-content: center;
-
-    background-color: ${linksColor};
+    //justify-content: space-between;
 
     cursor: pointer;
+    font-size: 2.3rem;
 
-    color: black;
+    color: whitesmoke;
 
     padding: 3rem;
 
     gap: 2rem;
 
-    transition: transform 250ms;
-
     &:hover {
-        background-color: ${oxfordBlue};
-        transform: translateY(-10px);
-        color: whitesmoke;
+        background-color: #035883;
     }
 
     svg{
-        font-size: 7rem;
+        font-size: 5rem;
+        color: whitesmoke;
+
     }
+
+    &:last-child{
+        justify-content: center;
+    }
+
+    @media screen and (max-width: ${sizes.tablet}) {
+    
+        display: flex;
+        flex-direction: row;
+        
+    }
+
+    @media screen and (max-width: ${sizes.mobile}) {
+        font-size: 1.8rem;
+    }
+
+    
 `;
