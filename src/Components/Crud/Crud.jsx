@@ -1,19 +1,13 @@
 import { IoIosAddCircleOutline } from 'react-icons/io'
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { useFetch } from "../../hooks/useFetch";
-import { usePost } from "../../hooks/usePost";
 import { CrudCard } from '../CrudCard/CrudCard';
-import { usePut } from "../../hooks/usePut";
-import { useDelete } from "../../hooks/useDelete";
 import { Container, Header, Name, 
-        AddRoom, Button, Content, 
-        ModalContainer, ModalTitle, 
-        ModalForm, ModalInput, 
-        ModalButtomSave, ModalButtonDelete 
-    } from './style'
+        AddRoom, Button, Content
+    } from './style'    
 import { CrudContext } from '../../contexts/context_crud';
 import { ModalContext } from '../../contexts/context_modal';
-import {  } from 'react';
+import { handleSala } from './utils';
 
 export function Crud(){
 
@@ -31,16 +25,7 @@ export function Crud(){
 
     const{ data, carregando, setDataCallBack, setUrl } = useFetch();
 
-    useEffect(()=>{
-        switch (crudType) {
-            case 1:
-                console.log('Passei no effect 1');
-                setUrl('/sala/');           
-        }
-        
-    },[crudType])
-
-    function carregarcards(){
+    function montaCard(){
         switch (crudType) {
             case 1:
                 return data.map((card)=>(
@@ -54,27 +39,18 @@ export function Crud(){
         }
     }
 
+
     function openEdit(){
-        setModalTitle('Editar sala');
+        /*setModalTitle('Editar sala');
         setModalType('edit');
         setModalFields([
           {
-            campo: 'Nome',
+            campo: 'Sala',
             valor: nome,
             func: setNome,
-          },
-          {
-            campo: 'Idade',
-            valor: idade,
-            func: setIdade
-          },
-          {
-            campo: 'CPF',
-            valor: cpf,
-            func: setCpf
           }
         ]);
-        setIsOpen(prevState => !prevState);
+        setIsOpen(prevState => !prevState);*/
       } 
    
     return(
@@ -87,7 +63,9 @@ export function Crud(){
                         placeholder='Digite o nome...'
                         onChange={e => setCrudField(e.target.value)}
                     />
-                    <Button >
+                    <Button onClick={()=>{
+                    handleSala(crudField, setDataCallBack)
+                    }}>
                         <IoIosAddCircleOutline size={40} />
                     </Button>
                 </AddRoom>
@@ -98,10 +76,11 @@ export function Crud(){
                 :
                 <Content>
                 {
-                   carregarcards()
+                    montaCard()
                 }
-            </Content>
+                </Content>
             }
+        
         </Container>
     )
 }

@@ -18,7 +18,7 @@ export function CrudCard({ id, text, onEdit, onDelete }){
             <Buttons>
                 <OptionButton>
                     <MdEdit onClick={ () => {
-                        console.log('Botao edit')
+                        onEdit()
                     }}/>
                 </OptionButton>
                 <OptionButton>
