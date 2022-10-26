@@ -65,7 +65,12 @@ export const Imagem = styled.div`
 export const Name = styled.h3`
     color: whitesmoke;
     font-size: 5rem;
-    text-shadow: 4px 4px 0px black;
+
+    &:hover{
+        color: ${backgroundColor};
+        cursor: pointer;
+    }
+    //text-shadow: 4px 4px 0px black;
 
    /* @media screen and (max-width:${sizes.laptop}){
         font-size: 3rem;

@@ -5,7 +5,7 @@ import { MdOutlineClass } from 'react-icons/md'
 import { Container, Imagem, Name, Buttons, OptionButton} from './style'
 
 
-export function CrudCard({ sala_id, name, onEdit }){
+export function CrudCard({ id, text, onEdit, onDelete }){
 
     return (
         <Container>
@@ -13,17 +13,17 @@ export function CrudCard({ sala_id, name, onEdit }){
                 <MdOutlineClass />
             </Imagem>
             <Name>
-                { name }
+                { text }
             </Name>
             <Buttons>
                 <OptionButton>
                     <MdEdit onClick={ () => {
-                        onEdit(sala_id, name, false);
+                        console.log('Botao edit')
                     }}/>
                 </OptionButton>
                 <OptionButton>
                     <AiFillDelete onClick={ () => {
-                        onEdit(sala_id, name, true);
+                        console.log('Botao delete')
                     }} />
                 </OptionButton>
             </Buttons>

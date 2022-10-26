@@ -111,7 +111,7 @@ export const Content = styled.div`
 
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: repeat(auto-fit, 480px);
+    grid-template-columns: repeat(auto-fit, 380px);
     justify-content: center;
     //align-items: center;
 

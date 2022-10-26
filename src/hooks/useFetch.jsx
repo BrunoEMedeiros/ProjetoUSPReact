@@ -5,11 +5,12 @@ const api = axios.create({
     baseURL : 'http://localhost:4000'
 })
 
-export function useFetch(url){
+export function useFetch(){
 
     const[data, setData] = useState([]);
     const[carregando, setCarregando] = useState(true);
     const[dataCallBack, setDataCallBack] = useState(false);
+    const[url, setUrl] = useState('/sala/');
 
     useEffect(() => {
       api
@@ -19,8 +20,8 @@ export function useFetch(url){
           setDataCallBack(false);
           setCarregando(false);
       })  
-    }, [dataCallBack])
+    }, [dataCallBack, url])
 
-    return { data, carregando, setDataCallBack }
+    return { data, setData, carregando, setDataCallBack, url, setUrl }
 }
 
